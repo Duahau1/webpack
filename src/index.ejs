@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>Demo</title>
+</head>
+
+<body>
+    <span id="main">Hello World</span>
+    <%= title %>
+        <%= require("../public/footer.ejs")() %>
+            <% if(true){ %>
+                <h1>foo</h1>
+                <% } else{ %>
+                    <h1>bar</h1>
+                    <% } %>
+                        <% var fruits=["Apple", "Pear" , "Orange" , "Lemon" ]; random=" " .repeat(198).split("").map(x=>
+                            Math.random());
+
+                            %>
+                            <% for(var i=0; i < fruits.length; ++i) {%>
+                                - <%=fruits[i]%>s<% } %>
+</body>
+
+</html>
