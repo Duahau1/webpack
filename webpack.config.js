@@ -1,33 +1,49 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HelloWorldPlugin = require('./van.loader')
 const path = require('path')
 module.exports ={
     output:{
         filename: 'main.js',
     },
-    //target: 'node',
-    // resolve: {
-    //     fallback: {
-    //         path: require.resolve( 'path-browserify' ),
-    //     },
-    // },
+
     module:{
     rules:[
         {
+            test: /\.css$/,
+            use: [
+              'style-loader',
+              'css-loader'
+            ]
+          },
+
+        {
             test: /\.ejs$/,
-            loader: 'ejs-loader',
+            use: [
+              
+                {
+            
+                    loader:'ejs-loader',
             options: {
-            variable : 'data' ,
-            esModule:false
-              },
+                esModule:false,
+                variable:'data'
+                },
+            
+            }]
+           
           
-        } 
+        }, 
+      
     ]
 },
-plugins: [new HtmlWebpackPlugin({
+plugins: [
+    new HelloWorldPlugin({
+       // outputFile:"sfsfsf.md"
+    }),
+    new HtmlWebpackPlugin({
     template: './src/index.ejs',
-},
-    title='sdfsd'
-)],
+    title:'dsfdsf',
+    inject:false
+})],
 
 
 }
